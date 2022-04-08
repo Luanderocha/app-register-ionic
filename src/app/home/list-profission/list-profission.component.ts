@@ -29,13 +29,6 @@ export class ListProfissionComponent implements OnInit {
     });
   }
 
-  doInfinite(infiniteScroll) {
-    // console.log('Begin async operation');
-    // setTimeout(() => {
-    //   console.log('Async operation has ended');
-    //   infiniteScroll.complete();
-    // }, 500);
-  }
 
   delete(id) {
     this.listProfessionService.deleteProfession(id).subscribe(res => {
