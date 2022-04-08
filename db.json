@@ -1,6 +1,13 @@
 {
   "user": {
-    "email": "test-user@test.com",
+    "email": "test@test.com",
     "password": "123"
+  },
+  "data": {
+    "cpf": "671.693.098-15",
+    "age": "33",
+    "photo": "",
+    "name": "Fátima Hadassa Nunes",
+    "address": "Rua Santiago - 89"
   }
 }

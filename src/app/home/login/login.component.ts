@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { IUser } from '../models/IUser.model';
 import { LoginService } from './login.service';
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public toastController: ToastController,
-    public loginService: LoginService
+    public loginService: LoginService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("FORM ", this.formLogin);
     const payload: IUser = this.formLogin.value;
     if (this.formLogin.valid) {
       this.loginService.getUser().subscribe(res => {
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
           this.openToast("Login Invalid !", 'danger');
         } else {
           this.openToast("Login Sucess", 'success');
+          this.router.navigateByUrl('home/data')
         }
       })
     } else {
