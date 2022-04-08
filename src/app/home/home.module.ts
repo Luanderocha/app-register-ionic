@@ -7,6 +7,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormRegisterComponent } from './form-register/form-register.component';
+import { ListProfissionComponent } from './list-profission/list-profission.component';
+import { RegistrationDataComponent } from './registration-data/registration-data.component';
 
 
 @NgModule({
@@ -18,6 +20,6 @@ import { FormRegisterComponent } from './form-register/form-register.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [HomePage, LoginComponent, FormRegisterComponent]
+  declarations: [HomePage, LoginComponent, FormRegisterComponent, ListProfissionComponent, RegistrationDataComponent]
 })
 export class HomePageModule { }

@@ -9,5 +9,16 @@
     "photo": "",
     "name": "Fátima Hadassa Nunes",
     "address": "Rua Santiago - 89"
-  }
+  },
+  "profession": [
+    {
+      "name": "Rosé",
+      "cpf": "12765",
+      "rg": "126",
+      "address": "jahfgsh",
+      "age": 12,
+      "profission": "testerad",
+      "id": 3
+    }
+  ]
 }

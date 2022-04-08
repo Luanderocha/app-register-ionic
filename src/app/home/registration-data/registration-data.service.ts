@@ -12,7 +12,7 @@ export class RegistrationDataService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(): Observable<IData> {
+  getData(): Observable<IData> {
     return this.http.get<IData>(`${this.urlBase}/data`);
   }
 }

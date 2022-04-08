@@ -14,7 +14,7 @@ export class RegistrationDataComponent implements OnInit {
   constructor(private registrationDataService: RegistrationDataService) { }
 
   ngOnInit() {
-    this.registrationDataService.getUser().subscribe(res => this.userData = res);
+    this.registrationDataService.getData().subscribe(res => this.userData = res);
   }
 
 }
