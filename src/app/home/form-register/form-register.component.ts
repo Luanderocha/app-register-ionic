@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { FormRegisterService } from './form-register.service';
@@ -10,7 +15,6 @@ import { FormRegisterService } from './form-register.service';
   styleUrls: ['./form-register.component.scss'],
 })
 export class FormRegisterComponent implements OnInit {
-
   formRegister: FormGroup;
   title = 'Register';
   saveButton = 'Register';
@@ -21,18 +25,16 @@ export class FormRegisterComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public toastController: ToastController
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.createForm();
     if (this.id) {
       this.title = 'Edit';
-      this.saveButton = 'Edit'
-      this.formRegisterService.getProfessionById(this.id).subscribe(
-        res => {
-          this.formRegister.patchValue(res);
-        }
-      )
+      this.saveButton = 'Edit';
+      this.formRegisterService.getProfessionById(this.id).subscribe((res) => {
+        this.formRegister.patchValue(res);
+      });
     }
   }
 
@@ -47,29 +49,29 @@ export class FormRegisterComponent implements OnInit {
       rg: [null, Validators.required],
       address: [null, Validators.required],
       age: [null, Validators.required],
-      profission: [null, Validators.required]
-    })
+      profession: [null, Validators.required],
+    });
   }
 
   register() {
     if (this.formRegister.valid) {
       if (this.id) {
-        this.formRegisterService.updateProfession(this.id, this.formRegister.value).subscribe(
-          res => {
-            this.openToast("Edit success", "success");
+        this.formRegisterService
+          .updateProfession(this.id, this.formRegister.value)
+          .subscribe((res) => {
+            this.openToast('Edit success', 'success');
             this.router.navigateByUrl('home/professions');
-          }
-        );
+          });
       } else {
-        this.formRegisterService.setProfesssion(this.formRegister.value).subscribe(
-          res => {
-            this.openToast("register success", "success");
-            this.router.navigateByUrl('home/professions')
-          }
-        );
+        this.formRegisterService
+          .setProfesssion(this.formRegister.value)
+          .subscribe((res) => {
+            this.openToast('register success', 'success');
+            this.router.navigateByUrl('home/professions');
+          });
       }
     } else {
-      this.openToast("Form Invalid!", "danger");
+      this.openToast('Form Invalid!', 'danger');
     }
   }
 
@@ -78,9 +80,8 @@ export class FormRegisterComponent implements OnInit {
       message: message,
       duration: 2000,
       position: 'top',
-      color: color
+      color: color,
     });
     toast.present();
   }
-
 }

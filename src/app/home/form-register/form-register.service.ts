@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { IProfession } from '../models/IProfession.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormRegisterService {
+  urlBase = 'http://localhost:3000';
 
-  urlBase = "http://localhost:3000"
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setProfesssion(payload): Observable<IProfession> {
     return this.http.post<IProfession>(`${this.urlBase}/profession`, payload);
