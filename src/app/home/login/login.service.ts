@@ -1,18 +1,33 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { IUser } from '../models/IUser.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(public afAuth: AngularFireAuth) {}
 
-  urlBase = "http://localhost:3000"
+  singUp(payload: IUser): Promise<any> {
+    return this.afAuth.createUserWithEmailAndPassword(
+      payload.email,
+      payload.password
+    );
+  }
 
-  constructor(private http: HttpClient) { }
+  singIn(payload: IUser): Promise<any> {
+    return this.afAuth.signInWithEmailAndPassword(
+      payload.email,
+      payload.password
+    );
+  }
 
-  getUser(): Observable<IUser> {
-    return this.http.get<IUser>(`${this.urlBase}/user`);
+  googleAuth() {
+    return this.authLogin(new GoogleAuthProvider());
+  }
+  // Auth logic to run auth providers
+  authLogin(provider) {
+    return this.afAuth.signInWithPopup(provider);
   }
 }

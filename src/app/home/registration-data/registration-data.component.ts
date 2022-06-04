@@ -8,13 +8,14 @@ import { RegistrationDataService } from './registration-data.service';
   styleUrls: ['./registration-data.component.scss'],
 })
 export class RegistrationDataComponent implements OnInit {
-
   userData: IData;
 
-  constructor(private registrationDataService: RegistrationDataService) { }
+  constructor(private registrationDataService: RegistrationDataService) {}
 
   ngOnInit() {
-    this.registrationDataService.getData().subscribe(res => this.userData = res);
+    this.registrationDataService
+      .getData()
+      .valueChanges()
+      .subscribe((res) => (this.userData = res));
   }
-
 }

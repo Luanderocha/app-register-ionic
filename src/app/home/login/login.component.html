@@ -1,22 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Login
-    </ion-title>
+    <ion-title *ngIf="login"> Login </ion-title>
+    <ion-title *ngIf="!login"> Register </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <form [formGroup]="formLogin" id="form">
-    <ion-item>
-      <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-button (click)="login()">Login</ion-button>
-    </ion-item>
-  </form>
+  <div *ngIf="login">
+    <form [formGroup]="formLogin" id="form">
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="userLogin()">Login</ion-button>
+        <ion-button style="margin-left: 0.5rem" (click)="register()">Sing-up</ion-button>
+      </ion-item>
+    </form>
+  </div>
+  <div *ngIf="!login">
+    <form [formGroup]="formLogin" id="form">
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="createUserlogin()">Register</ion-button>
+      </ion-item>
+    </form>
+  </div>
+  
 </ion-content>

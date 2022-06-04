@@ -1,18 +1,18 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IData } from '../models/IData.model';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
+import { Data } from '../classes/data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationDataService {
 
-  urlBase = "http://localhost:3000"
+  userRef:AngularFireObject<Data>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private db: AngularFireDatabase) { }
 
-  getData(): Observable<IData> {
-    return this.http.get<IData>(`${this.urlBase}/data`);
+  getData() {
+    this.userRef = this.db.object(`/user`);
+    return this.userRef;
   }
 }

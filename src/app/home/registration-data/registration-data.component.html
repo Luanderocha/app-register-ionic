@@ -8,6 +8,14 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-item>
+      <ion-img [src]="userData?.photo" id="photo"></ion-img>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Name : {{userData?.name}}</ion-label>
+    </ion-item>
+
+    <ion-item>
       <ion-label>Cpf : {{userData?.cpf}}</ion-label>
     </ion-item>
 
@@ -15,16 +23,6 @@
       <ion-label>My Age : {{userData?.age}}</ion-label>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Photo : </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-img [src]="userData?.photo" id="photo"></ion-img>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Name : {{userData?.name}}</ion-label>
-    </ion-item>
     <ion-item>
       <ion-label>Address : {{userData?.address}}</ion-label>
     </ion-item>
