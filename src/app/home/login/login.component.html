@@ -17,7 +17,9 @@
       </ion-item>
       <ion-item>
         <ion-button (click)="userLogin()">Login</ion-button>
-        <ion-button style="margin-left: 0.5rem" (click)="register()">Sing-up</ion-button>
+        <ion-button style="margin-left: 0.5rem" (click)="register()"
+          >Sing-up</ion-button
+        >
       </ion-item>
     </form>
   </div>
@@ -36,5 +38,8 @@
       </ion-item>
     </form>
   </div>
-  
+  <div class="google" (click)="createUserGoogle()">
+    <ion-img src="./assets/google.png" id="photo"></ion-img>
+    <ion-label>Log in with Google</ion-label>
+  </div>
 </ion-content>
