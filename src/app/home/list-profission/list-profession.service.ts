@@ -1,22 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IProfession } from '../models/IProfession.model';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
+import { Profession } from '../classes/profession';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ListProfessionService {
+  professionListRef: AngularFireList<Profession>;
+  professionRef: AngularFireObject<Profession>;
 
-  urlBase = "http://localhost:3000"
+  constructor(private db: AngularFireDatabase) {}
 
-  constructor(private http: HttpClient) { }
-
-  getProfessions(): Observable<IProfession[]> {
-    return this.http.get<IProfession[]>(`${this.urlBase}/profession`);
+  getProfessions() {
+    this.professionListRef = this.db.list('/profession');
+    return this.professionListRef;
   }
 
-  deleteProfession(id): Observable<IProfession> {
-    return this.http.delete<IProfession>(`${this.urlBase}/profession/${id}`);
+  deleteProfession(id: string) {
+    this.professionRef = this.db.object(`/profession/${id}`);
+    return this.professionRef.remove();
   }
 }

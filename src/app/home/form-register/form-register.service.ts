@@ -1,25 +1,31 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IProfession } from '../models/IProfession.model';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject
+} from '@angular/fire/compat/database';
+import { Profession } from '../classes/profession';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormRegisterService {
-  urlBase = 'http://localhost:3000';
+  professionListRef: AngularFireList<Profession>;
+  professionRef: AngularFireObject<Profession>;
 
-  constructor(private http: HttpClient) {}
+  constructor( private db: AngularFireDatabase) {}
 
-  setProfesssion(payload): Observable<IProfession> {
-    return this.http.post<IProfession>(`${this.urlBase}/profession`, payload);
+  setProfesssion(payload) {
+    this.professionListRef = this.db.list('/profession');
+    return this.professionListRef.push(payload);
   }
 
-  updateProfession(id, body): Observable<IProfession> {
-    return this.http.put<IProfession>(`${this.urlBase}/profession/${id}`, body);
+  updateProfession(id, body) {
+    return this.professionRef.update(body);
   }
 
-  getProfessionById(id: number): Observable<IProfession> {
-    return this.http.get<IProfession>(`${this.urlBase}/profession/${id}`);
+  getProfessionById(id: string) {
+    this.professionRef = this.db.object(`/profession/${id}`);
+    return this.professionRef;
   }
 }

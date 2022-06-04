@@ -32,9 +32,12 @@ export class FormRegisterComponent implements OnInit {
     if (this.id) {
       this.title = 'Edit';
       this.saveButton = 'Edit';
-      this.formRegisterService.getProfessionById(this.id).subscribe((res) => {
-        this.formRegister.patchValue(res);
-      });
+      this.formRegisterService
+        .getProfessionById(this.id)
+        .valueChanges()
+        .subscribe((res) => {
+          this.formRegister.patchValue(res);
+        });
     }
   }
 
@@ -58,16 +61,22 @@ export class FormRegisterComponent implements OnInit {
       if (this.id) {
         this.formRegisterService
           .updateProfession(this.id, this.formRegister.value)
-          .subscribe((res) => {
+          .then((res) => {
             this.openToast('Edit success', 'success');
             this.router.navigateByUrl('home/professions');
+          })
+          .catch((error) => {
+            this.openToast('Form Invalid!' + error, 'danger');
           });
       } else {
         this.formRegisterService
           .setProfesssion(this.formRegister.value)
-          .subscribe((res) => {
+          .then((res) => {
             this.openToast('register success', 'success');
             this.router.navigateByUrl('home/professions');
+          })
+          .catch((error) => {
+            this.openToast('Form Invalid!' + error, 'danger');
           });
       }
     } else {

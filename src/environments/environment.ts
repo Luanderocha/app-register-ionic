@@ -2,8 +2,19 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyB4kv59zXVROesktXzsSqLhnH8QGdU3k64',
+    authDomain: 'controle-itens.firebaseapp.com',
+    databaseURL: 'https://controle-itens.firebaseio.com',
+    projectId: 'controle-itens',
+    storageBucket: 'controle-itens.appspot.com',
+    messagingSenderId: '525997979528',
+    appId: '1:525997979528:web:d4072eac1a7d2ae9',
+    measurementId: 'G-EVMQP0L6QW',
+  },
 };
 
 /*

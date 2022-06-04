@@ -6,4 +6,5 @@ export interface IProfession {
     address: string;
     profession: string;
     id?:number;
+    $key?:string;
 }

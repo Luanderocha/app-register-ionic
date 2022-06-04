@@ -10,15 +10,5 @@
     "name": "Fátima Hadassa Nunes",
     "address": "Rua Santiago - 89"
   },
-  "profession": [
-    {
-      "name": "luan",
-      "cpf": "129199272-08",
-      "rg": "129999999",
-      "address": "rua tal",
-      "age": 21,
-      "profession": "tester app",
-      "id": 2
-    }
-  ]
+  "profession": []
 }

@@ -9,8 +9,8 @@
   <ion-card *ngFor="let item of listProfessions">
     <ion-row class="ion-align-items-end">
       <ion-col>
-        <ion-button color="dark" size="small" (click)="edit(item?.id)">Edit</ion-button>
-        <ion-button color="danger" size="small" (click)="delete(item?.id)">delete</ion-button>
+        <ion-button color="dark" size="small" (click)="edit(item?.$key)">Edit</ion-button>
+        <ion-button color="danger" size="small" (click)="delete(item?.$key)">delete</ion-button>
       </ion-col>
     </ion-row>
     <ion-item>
